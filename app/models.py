@@ -125,3 +125,7 @@ class Location(db.Model):
 
 		except IntegrityError:
 			db.session.rollback()
+
+	def get_records(self):
+
+		return Location.query.filter(Location.wordage == self.wordage).all()

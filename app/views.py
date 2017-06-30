@@ -37,6 +37,7 @@ def wordme():
 	spot = IpLoc(ip_addr).get_location() #list of floats
 	location = Location(the_word, ip_addr, spot[0], spot[1])
 	location.create_record()
+	others = location.get_records()
 	wt = Word_Trie(r, the_word)
 
 	if r.zadd('words', 0 , the_word + '%') == 0:
@@ -54,4 +55,4 @@ def wordme():
 		entry = Word(the_word, word)
 		entry.create_record()
 
-	return render_template('results.html', word=word, user_ip=ip_addr, spot=spot)
+	return render_template('results.html', word=word, user_ip=ip_addr, spot=spot, others=others)

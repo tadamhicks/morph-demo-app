@@ -19,10 +19,13 @@
           zoom: 4,
           center: middle
         });
+        {% for other in others %}
+        var {{ other.wordage + other.ip_address.replace('.', '') }} = {lat: {{ other.latitude }}, lng: {{ other.longitude }}};
         var marker = new google.maps.Marker({
-          position: middle,
+          position: {{ other.wordage + other.ip_address.replace('.', '') }},
           map: map
         });
+        {% endfor %}
       }
  </script>
 
