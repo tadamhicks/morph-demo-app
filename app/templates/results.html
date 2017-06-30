@@ -5,8 +5,25 @@
 		<div class="form_bg">
 			<p>{{ word }}</p>
 			<p>{{ user_ip }}</p>
+			<div id="map" style="width: 500px; height: 500px;"></div>
 		</div>
 	</div>
 </div>
+<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCe5Fw4YJAz6svqBlt7Ixgd-dUg27gnqCc&callback=initMap" >
+ </script>
+ <script>
+      function initMap() {
+        var middle = {lat: {{ spot[0] }}, lng: {{ spot[1] }}};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 4,
+          center: middle
+        });
+        var marker = new google.maps.Marker({
+          position: middle,
+          map: map
+        });
+      }
+ </script>
 
 {% endblock %}
