@@ -12,7 +12,7 @@ DEBUG = True
 SQLALCHEMY_ECHO = True
 SECRET_KEY = 'aedfjkg2378rt6wjhdecfbv2734rt623'
 
-REDIS_HOST = os.environ['REDIS_IP']
+REDIS_IP = os.environ['REDIS_IP']
 REDIS_PORT = os.environ['REDIS_PORT']
 
 SQLA_DB_USER = os.environ['MYSQL_USERNAME']

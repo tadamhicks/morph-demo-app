@@ -9,7 +9,7 @@ from app import app
 from .models import Word_Trie, Word, IpLoc, Location
 
 
-r = redis.StrictRedis(host=app.config['REDIS_HOST'])
+r = redis.StrictRedis(host=app.config['REDIS_IP'], port=app.config['REDIS_PORT'])
 
 
 @app.route('/', methods=['GET'])
