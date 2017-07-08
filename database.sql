@@ -1,3 +1,10 @@
+create database demo_app;
+
+GRANT ALL PRIVILEGES
+ON demo_app.*
+TO 'admin'@'%'
+IDENTIFIED BY 'password';
+
 create table word (
 	wordage varchar(128),
 	phone_spell varchar(128),

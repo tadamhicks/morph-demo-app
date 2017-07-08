@@ -106,7 +106,7 @@ class Location(db.Model):
 
 	__tablename__ = 'location'
 	wordage = db.Column(db.String(128), index=True, primary_key=True)
-	ip_address = db.Column(db.String(128))
+	ip_address = db.Column(db.String(128), primary_key=True)
 	latitude = db.Column(db.Float)
 	longitude = db.Column(db.Float)
 
