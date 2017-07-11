@@ -22,7 +22,7 @@ to look for words already available in redis and suggest them.
 '''
 @app.route('/check', methods=['GET'])
 def check():
-	term = request.args.get('query')
+	term = request.args.get('query').lower()
 	wt = Word_Trie(r, term)
 	results = list(wt.complete(50))
 	print(results)
@@ -32,8 +32,8 @@ def check():
 @app.route('/wordme', methods=['GET'])
 def wordme():
 
-	the_word = str(request.args.get('wordage'))
-	ip_addr = request.remote_addr #string
+	the_word = str(request.args.get('wordage')).lower()
+	ip_addr = request.environ.get('HTTP_X_REAL_IP', request.remote_addr) #string
 	spot = IpLoc(ip_addr).get_location() #list of floats
 	location = Location(the_word, ip_addr, spot[0], spot[1])
 	location.create_record()
