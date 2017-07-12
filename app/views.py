@@ -55,4 +55,4 @@ def wordme():
 		entry = Word(the_word, word)
 		entry.create_record()
 
-	return render_template('results.html', word=word, user_ip=ip_addr, spot=spot, others=others)
+	return render_template('results.html', the_word=the_word, word=word, spot=spot, others=others)
