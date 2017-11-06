@@ -43,6 +43,7 @@ node {
 
         String headering = 'Authorization: BEARER 9e683c25-6260-4b37-be65-0b06a54214e8'
 
-        morpheusApp.buildApp(morpheusUrl, postBody, headering)
+        sh "curl -X POST -d ${postBody} -h ${headering} ${morpheusUrl}"
+
     }
 }
