@@ -43,7 +43,7 @@ node {
 
         String headering = 'Authorization: BEARER 9e683c25-6260-4b37-be65-0b06a54214e8'
 
-        sh "curl -X POST -d \'${postBody}\' -H \'${headering}\' ${morpheusUrl}"
+        sh "curl -X POST -d '${postBody}' -H '${headering}' ${morpheusUrl}"
 
     }
 }
