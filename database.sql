@@ -1,5 +1,7 @@
 create database demo_app;
 
+use demo_app;
+
 GRANT ALL PRIVILEGES
 ON demo_app.*
 TO 'admin'@'%'

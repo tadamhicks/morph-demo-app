@@ -3,7 +3,14 @@ import os
 API_URL = 'http://api.wordnik.com/v4/word.json/'
 API_KEY = os.environ['WORDNIK_API_KEY']
 ACCESS = {'api_key': API_KEY, 'useCanonical': 'False', 'type-format': 'ahd'}
-DEBUG = True
+
+if os.environ['ENVIRONMENT'] == 'dev':
+	DEBUG = True
+	SQLALCHEMY_ECHO = True
+else:
+	DEBUG = False
+	SQLALCHEMY_ECHO = False
+
 SQLALCHEMY_ECHO = True
 SECRET_KEY = 'aedfjkg2378rt6wjhdecfbv2734rt623'
 REDIS_IP = os.environ['REDIS_IP']
