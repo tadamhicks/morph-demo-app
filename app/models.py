@@ -127,5 +127,4 @@ class Location(db.Model):
 			db.session.rollback()
 
 	def get_records(self):
-
 		return Location.query.filter(Location.wordage == self.wordage).all()
