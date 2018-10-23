@@ -7,6 +7,7 @@ RUN apk update && \
     apk add bash && \
     apk add bash-doc && \
     apk add bash-completion && \
+    apk add mysql-client && \
     apk add --no-cache python3 supervisor && \
     python3 -m ensurepip && \
     rm -r /usr/lib/python*/ensurepip && \
