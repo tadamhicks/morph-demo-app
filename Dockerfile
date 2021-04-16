@@ -1,14 +1,19 @@
-FROM alpine:3.6
+FROM alpine:3.9
 
 ENV APP_DIR /app
 
 RUN apk update && \
     apk upgrade && \
     apk add bash && \
+    apk add gcc && \
     apk add bash-doc && \
     apk add bash-completion && \
     apk add mysql-client && \
-    apk add --no-cache python3 supervisor && \
+    apk add python-dev && \
+    apk add python3-dev && \
+    apk add g++ && \
+    apk add libffi-dev musl-dev linux-headers && \
+    apk add --no-cache supervisor && \
     python3 -m ensurepip && \
     rm -r /usr/lib/python*/ensurepip && \
     pip3 install --upgrade pip setuptools && \

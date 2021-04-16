@@ -12,7 +12,6 @@ def create_file():
 	    'type-format': 'ahd'
 	}
 
-
 	if os.environ['ENVIRONMENT'] == 'dev':
 		DEBUG = True
 		SQLALCHEMY_ECHO = True
@@ -51,6 +50,7 @@ def create_file():
 		'SQLALCHEMY_DATABASE_URI = ' + repr(SQLALCHEMY_DATABASE_URI) + '\n'
 		'LOC_API = ' + repr(LOC_API) + '\n'
 		)
+
 
 if __name__ == "__main__":
 	create_file()

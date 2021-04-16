@@ -6,3 +6,4 @@ A_D_A.json
 myenv
 .vscode
 *.pyc
+.idea

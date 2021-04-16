@@ -5,6 +5,7 @@ import sys
 r = redis.StrictRedis(host='localhost')
 count = 50
 
+
 def add_word(r, word):
     for l in range(1, len(word)):
         prefix = word[0:l]
@@ -18,12 +19,12 @@ def complete(r, prefix, count):
 	start = r.zrank('words', prefix)
 	if not start:
 		return results
-	while (len(results) != count):
-		range = r.zrange('words', start, start+grab-1)
+	while len(results) != count:
+		ranger = r.zrange('words', start, start+grab-1)
 		start += 1
-		if not range or len(range) == 0:
+		if not range or len(ranger) == 0:
 			break
-		for entry in range:
+		for entry in ranger:
 			entry = entry.decode("utf-8")
 			minlen = min(len(entry), len(prefix))
 			if entry[0:minlen] != prefix[0:minlen]:
@@ -34,10 +35,11 @@ def complete(r, prefix, count):
 	return results
 
 
-def autoComplete():
+def auto_complete():
 	x = complete(r, sys.argv[1], count)
 	print(type(x))
 	print(x)
 
+
 if __name__ == "__main__":
-	autoComplete()
+	auto_complete()

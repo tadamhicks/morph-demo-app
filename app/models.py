@@ -1,4 +1,4 @@
-from app import app, db
+from app import db
 import requests
 import json
 from sqlalchemy.exc import IntegrityError
@@ -8,25 +8,25 @@ from sqlalchemy.exc import IntegrityError
 Word_Trie sets up the data structure for the autocomplete API.  Creates a
 trie for each word on addition.
 '''
-class Word_Trie(object):
+
+
+class WordTrie(object):
 
 	def __init__(self, r, word):
 
 		self.r = r
 		self.word = word
 
-
 	def add_word(self):
 		
 		for l in range(1, len(self.word)):
 			prefix = self.word[0:l]
-			self.r.zadd('words', 0, prefix)
+			self.r.zadd('words', {prefix: 0})
 		
-		self.r.zadd('words', 0, self.word+'%')
-
+		self.r.zadd('words', {self.word+'%': 0})
 
 	def complete(self, count):
-		
+
 		results = set()
 		grab = 42
 		start = self.r.zrank('words', self.word)
@@ -34,14 +34,14 @@ class Word_Trie(object):
 		if not start:
 			return results
 		
-		while (len(results) != count):
-			range = self.r.zrange('words', start, start+grab-1)
+		while len(results) != count:
+			ranger = self.r.zrange('words', start, start+grab-1)
 			start += 1
 			
-			if not range or len(range) == 0:
+			if not range or len(ranger) == 0:
 				break
 			
-			for entry in range:
+			for entry in ranger:
 				entry = entry.decode("utf-8")
 				minlen = min(len(entry), len(self.word))
 				
@@ -77,6 +77,8 @@ class IpLoc(object):
 To make things easy we store previously searched words and their phonetic spelling.
 Word is a pair of the submitted word to the phonetic spelling.
 '''
+
+
 class Word(db.Model):
 
 	__tablename__ = 'word'
@@ -102,6 +104,8 @@ class Word(db.Model):
 We also need to keep track of the word as it relates to previous searches and the
 location of the searcher
 '''
+
+
 class Location(db.Model):
 
 	__tablename__ = 'location'
