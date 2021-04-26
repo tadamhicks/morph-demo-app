@@ -30,7 +30,4 @@ VOLUME ["${APP_DIR}"]
 
 EXPOSE 9090
 
-#exec gunicorn --workers 3 --bind 127.0.0.1:9090 app:app
-#CMD ["gunicorn", "--workers", "3", "--bind", ":9090", "app:app"]
-#CMD ["python3", "/run.py"]
 CMD ["supervisord", "-c", "/etc/supervisord.conf"]
