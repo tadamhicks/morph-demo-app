@@ -1,4 +1,4 @@
-FROM alpine:3.9
+FROM alpine:3.11.11
 
 ENV APP_DIR /app
 
@@ -21,6 +21,7 @@ RUN apk update && \
     if [[ ! -e /usr/bin/python ]]; then ln -sf /usr/bin/python3 /usr/bin/python; fi && \
     rm -r /root/.cache && \
     echo "files = ${APP_DIR}/conf/*.ini" >> /etc/supervisord.conf
+
 
 ADD . / ./
 

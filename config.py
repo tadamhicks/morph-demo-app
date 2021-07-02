@@ -11,6 +11,9 @@ else:
 	DEBUG = False
 	SQLALCHEMY_ECHO = False
 
+HONEYCOMB_API_KEY = os.environ['HONEYCOMB_API_KEY']
+HONEYCOMB_DATASET = os.environ['HONEYCOMB_DATASET']
+SERVICE_NAME = os.environ['SERVICE_NAME']
 SECRET_KEY = 'aedfjkg2378rt6wjhdecfbv2734rt623'
 REDIS_IP = os.environ['REDIS_IP']
 REDIS_PORT = os.environ['REDIS_PORT']
