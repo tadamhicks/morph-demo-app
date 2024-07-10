@@ -24,3 +24,4 @@ opentelemetry-instrumentation-flask
 opentelemetry-instrumentation-requests
 opentelemetry-instrumentation-wsgi
 opentelemetry-exporter-otlp-proto-grpc
+zipp>=3.19.1 # not directly required, pinned by Snyk to avoid a vulnerability
