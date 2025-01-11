@@ -1,4 +1,4 @@
-FROM alpine:3.11.11
+FROM alpine:3.21.2
 
 ENV APP_DIR /app
 
