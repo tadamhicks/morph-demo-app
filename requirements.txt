@@ -13,7 +13,7 @@ pytz==2021.1
 redis==3.5.3
 requests==2.25.1
 SQLAlchemy==1.4.4
-urllib3==1.26.4
+urllib3==2.5.0
 Werkzeug==1.0.1
 virtualenv
 honeycomb-beeline
@@ -24,3 +24,4 @@ opentelemetry-instrumentation-flask
 opentelemetry-instrumentation-requests
 opentelemetry-instrumentation-wsgi
 opentelemetry-exporter-otlp-proto-grpc
+protobuf>=4.25.8 # not directly required, pinned by Snyk to avoid a vulnerability
